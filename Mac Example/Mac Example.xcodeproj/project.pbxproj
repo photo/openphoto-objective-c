@@ -1,0 +1,484 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CDE210A815188E3C002C80F8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDE210A715188E3C002C80F8 /* Cocoa.framework */; };
+		CDE210B215188E3C002C80F8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CDE210B015188E3C002C80F8 /* InfoPlist.strings */; };
+		CDE210B415188E3C002C80F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE210B315188E3C002C80F8 /* main.m */; };
+		CDE210B815188E3C002C80F8 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CDE210B615188E3C002C80F8 /* Credits.rtf */; };
+		CDE210BB15188E3C002C80F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE210BA15188E3C002C80F8 /* AppDelegate.m */; };
+		CDE210BE15188E3C002C80F8 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDE210BC15188E3C002C80F8 /* MainMenu.xib */; };
+		CDE210C115188E3C002C80F8 /* Mac_Example.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDE210BF15188E3C002C80F8 /* Mac_Example.xcdatamodeld */; };
+		CDE210C915188E3C002C80F8 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDE210C815188E3C002C80F8 /* SenTestingKit.framework */; };
+		CDE210CA15188E3C002C80F8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDE210A715188E3C002C80F8 /* Cocoa.framework */; };
+		CDE210D215188E3C002C80F8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CDE210D015188E3C002C80F8 /* InfoPlist.strings */; };
+		CDE210D515188E3C002C80F8 /* Mac_ExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE210D415188E3C002C80F8 /* Mac_ExampleTests.m */; };
+		CDE210EE15188FA2002C80F8 /* OpenPhotoService.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE210ED15188FA2002C80F8 /* OpenPhotoService.m */; };
+		CDE210EF15188FA2002C80F8 /* OpenPhotoService.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE210ED15188FA2002C80F8 /* OpenPhotoService.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CDE210CB15188E3C002C80F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CDE2109A15188E3C002C80F8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CDE210A215188E3C002C80F8;
+			remoteInfo = "Mac Example";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CDE210A315188E3C002C80F8 /* Mac Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mac Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDE210A715188E3C002C80F8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		CDE210AA15188E3C002C80F8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		CDE210AB15188E3C002C80F8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		CDE210AC15188E3C002C80F8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CDE210AF15188E3C002C80F8 /* Mac Example-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Mac Example-Info.plist"; sourceTree = "<group>"; };
+		CDE210B115188E3C002C80F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CDE210B315188E3C002C80F8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CDE210B515188E3C002C80F8 /* Mac Example-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mac Example-Prefix.pch"; sourceTree = "<group>"; };
+		CDE210B715188E3C002C80F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		CDE210B915188E3C002C80F8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CDE210BA15188E3C002C80F8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CDE210BD15188E3C002C80F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		CDE210C015188E3C002C80F8 /* Mac_Example.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Mac_Example.xcdatamodel; sourceTree = "<group>"; };
+		CDE210C715188E3C002C80F8 /* Mac ExampleTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mac ExampleTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDE210C815188E3C002C80F8 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		CDE210CF15188E3C002C80F8 /* Mac ExampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Mac ExampleTests-Info.plist"; sourceTree = "<group>"; };
+		CDE210D115188E3C002C80F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CDE210D315188E3C002C80F8 /* Mac_ExampleTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mac_ExampleTests.h; sourceTree = "<group>"; };
+		CDE210D415188E3C002C80F8 /* Mac_ExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Mac_ExampleTests.m; sourceTree = "<group>"; };
+		CDE210EC15188FA2002C80F8 /* OpenPhotoService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenPhotoService.h; path = ../../OpenPhotoService.h; sourceTree = "<group>"; };
+		CDE210ED15188FA2002C80F8 /* OpenPhotoService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OpenPhotoService.m; path = ../../OpenPhotoService.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CDE210A015188E3C002C80F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDE210A815188E3C002C80F8 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDE210C315188E3C002C80F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDE210C915188E3C002C80F8 /* SenTestingKit.framework in Frameworks */,
+				CDE210CA15188E3C002C80F8 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CDE2109815188E3C002C80F8 = {
+			isa = PBXGroup;
+			children = (
+				CDE210AD15188E3C002C80F8 /* Mac Example */,
+				CDE210CD15188E3C002C80F8 /* Mac ExampleTests */,
+				CDE210A615188E3C002C80F8 /* Frameworks */,
+				CDE210A415188E3C002C80F8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CDE210A415188E3C002C80F8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CDE210A315188E3C002C80F8 /* Mac Example.app */,
+				CDE210C715188E3C002C80F8 /* Mac ExampleTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CDE210A615188E3C002C80F8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CDE210A715188E3C002C80F8 /* Cocoa.framework */,
+				CDE210C815188E3C002C80F8 /* SenTestingKit.framework */,
+				CDE210A915188E3C002C80F8 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CDE210A915188E3C002C80F8 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CDE210AA15188E3C002C80F8 /* AppKit.framework */,
+				CDE210AB15188E3C002C80F8 /* CoreData.framework */,
+				CDE210AC15188E3C002C80F8 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		CDE210AD15188E3C002C80F8 /* Mac Example */ = {
+			isa = PBXGroup;
+			children = (
+				CDE210EA15188F7F002C80F8 /* Library */,
+				CDE210B915188E3C002C80F8 /* AppDelegate.h */,
+				CDE210BA15188E3C002C80F8 /* AppDelegate.m */,
+				CDE210BC15188E3C002C80F8 /* MainMenu.xib */,
+				CDE210BF15188E3C002C80F8 /* Mac_Example.xcdatamodeld */,
+				CDE210AE15188E3C002C80F8 /* Supporting Files */,
+			);
+			path = "Mac Example";
+			sourceTree = "<group>";
+		};
+		CDE210AE15188E3C002C80F8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CDE210AF15188E3C002C80F8 /* Mac Example-Info.plist */,
+				CDE210B015188E3C002C80F8 /* InfoPlist.strings */,
+				CDE210B315188E3C002C80F8 /* main.m */,
+				CDE210B515188E3C002C80F8 /* Mac Example-Prefix.pch */,
+				CDE210B615188E3C002C80F8 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CDE210CD15188E3C002C80F8 /* Mac ExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				CDE210D315188E3C002C80F8 /* Mac_ExampleTests.h */,
+				CDE210D415188E3C002C80F8 /* Mac_ExampleTests.m */,
+				CDE210CE15188E3C002C80F8 /* Supporting Files */,
+			);
+			path = "Mac ExampleTests";
+			sourceTree = "<group>";
+		};
+		CDE210CE15188E3C002C80F8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CDE210CF15188E3C002C80F8 /* Mac ExampleTests-Info.plist */,
+				CDE210D015188E3C002C80F8 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CDE210EA15188F7F002C80F8 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				CDE210EC15188FA2002C80F8 /* OpenPhotoService.h */,
+				CDE210ED15188FA2002C80F8 /* OpenPhotoService.m */,
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CDE210A215188E3C002C80F8 /* Mac Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CDE210D815188E3C002C80F8 /* Build configuration list for PBXNativeTarget "Mac Example" */;
+			buildPhases = (
+				CDE2109F15188E3C002C80F8 /* Sources */,
+				CDE210A015188E3C002C80F8 /* Frameworks */,
+				CDE210A115188E3C002C80F8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Mac Example";
+			productName = "Mac Example";
+			productReference = CDE210A315188E3C002C80F8 /* Mac Example.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CDE210C615188E3C002C80F8 /* Mac ExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CDE210DB15188E3C002C80F8 /* Build configuration list for PBXNativeTarget "Mac ExampleTests" */;
+			buildPhases = (
+				CDE210C215188E3C002C80F8 /* Sources */,
+				CDE210C315188E3C002C80F8 /* Frameworks */,
+				CDE210C415188E3C002C80F8 /* Resources */,
+				CDE210C515188E3C002C80F8 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CDE210CC15188E3C002C80F8 /* PBXTargetDependency */,
+			);
+			name = "Mac ExampleTests";
+			productName = "Mac ExampleTests";
+			productReference = CDE210C715188E3C002C80F8 /* Mac ExampleTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CDE2109A15188E3C002C80F8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = OpenPhoto;
+			};
+			buildConfigurationList = CDE2109D15188E3C002C80F8 /* Build configuration list for PBXProject "Mac Example" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CDE2109815188E3C002C80F8;
+			productRefGroup = CDE210A415188E3C002C80F8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CDE210A215188E3C002C80F8 /* Mac Example */,
+				CDE210C615188E3C002C80F8 /* Mac ExampleTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CDE210A115188E3C002C80F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDE210B215188E3C002C80F8 /* InfoPlist.strings in Resources */,
+				CDE210B815188E3C002C80F8 /* Credits.rtf in Resources */,
+				CDE210BE15188E3C002C80F8 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDE210C415188E3C002C80F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDE210D215188E3C002C80F8 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CDE210C515188E3C002C80F8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CDE2109F15188E3C002C80F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDE210B415188E3C002C80F8 /* main.m in Sources */,
+				CDE210BB15188E3C002C80F8 /* AppDelegate.m in Sources */,
+				CDE210C115188E3C002C80F8 /* Mac_Example.xcdatamodeld in Sources */,
+				CDE210EE15188FA2002C80F8 /* OpenPhotoService.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDE210C215188E3C002C80F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDE210D515188E3C002C80F8 /* Mac_ExampleTests.m in Sources */,
+				CDE210EF15188FA2002C80F8 /* OpenPhotoService.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CDE210CC15188E3C002C80F8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CDE210A215188E3C002C80F8 /* Mac Example */;
+			targetProxy = CDE210CB15188E3C002C80F8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CDE210B015188E3C002C80F8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CDE210B115188E3C002C80F8 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		CDE210B615188E3C002C80F8 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CDE210B715188E3C002C80F8 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		CDE210BC15188E3C002C80F8 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CDE210BD15188E3C002C80F8 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		CDE210D015188E3C002C80F8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CDE210D115188E3C002C80F8 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CDE210D615188E3C002C80F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		CDE210D715188E3C002C80F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		CDE210D915188E3C002C80F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Mac Example/Mac Example-Prefix.pch";
+				INFOPLIST_FILE = "Mac Example/Mac Example-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		CDE210DA15188E3C002C80F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Mac Example/Mac Example-Prefix.pch";
+				INFOPLIST_FILE = "Mac Example/Mac Example-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		CDE210DC15188E3C002C80F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Mac Example.app/Contents/MacOS/Mac Example";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Mac Example/Mac Example-Prefix.pch";
+				INFOPLIST_FILE = "Mac ExampleTests/Mac ExampleTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		CDE210DD15188E3C002C80F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Mac Example.app/Contents/MacOS/Mac Example";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Mac Example/Mac Example-Prefix.pch";
+				INFOPLIST_FILE = "Mac ExampleTests/Mac ExampleTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CDE2109D15188E3C002C80F8 /* Build configuration list for PBXProject "Mac Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CDE210D615188E3C002C80F8 /* Debug */,
+				CDE210D715188E3C002C80F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CDE210D815188E3C002C80F8 /* Build configuration list for PBXNativeTarget "Mac Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CDE210D915188E3C002C80F8 /* Debug */,
+				CDE210DA15188E3C002C80F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CDE210DB15188E3C002C80F8 /* Build configuration list for PBXNativeTarget "Mac ExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CDE210DC15188E3C002C80F8 /* Debug */,
+				CDE210DD15188E3C002C80F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CDE210BF15188E3C002C80F8 /* Mac_Example.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CDE210C015188E3C002C80F8 /* Mac_Example.xcdatamodel */,
+			);
+			currentVersion = CDE210C015188E3C002C80F8 /* Mac_Example.xcdatamodel */;
+			path = Mac_Example.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = CDE2109A15188E3C002C80F8 /* Project object */;
+}

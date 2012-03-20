@@ -52,8 +52,3 @@ There are importing tools available to make the switch easy.
 [schemas]: https://github.com/openphoto/frontend/blob/master/documentation/schemas/Schemas.markdown
 [guides]: https://github.com/openphoto/frontend/blob/master/documentation/guides/Guides.markdown
 ---------------------------------------
-
-
-### Modules
-Don't forget to execute
-$ git submodule update --init
