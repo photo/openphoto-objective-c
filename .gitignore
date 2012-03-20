@@ -1,0 +1,23 @@
+# user data information
+Mac Example/Mac Example.xcodeproj/xcuserdata/
+iPhone and iPad Example/iPhone and iPad Example.xcodeproj/xcuserdata/
+
+# Xcode
+build/*
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+*.xcworkspace
+!default.xcworkspace
+xcuserdata
+profile
+*.moved-aside
+
+# osx noise
+.DS_Store
+profile
