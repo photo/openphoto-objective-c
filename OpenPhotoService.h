@@ -19,6 +19,16 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OpenPhotoService : NSObject
+@interface OpenPhotoService : NSObject{
+    
+}
+
++ (OpenPhotoService*) singletonForServer:(NSString *) server 
+                                oAuthKey:(NSString *) oAuthKey 
+                             oAuthSecret:(NSString *) oAuthSecret 
+                             consumerKey:(NSString *) consumerKey 
+                          consumerSecret:(NSString *) consumerSecret;
+
+- (NSArray*) fetchNewestPhotosMaxResults:(int) maxResults;
 
 @end

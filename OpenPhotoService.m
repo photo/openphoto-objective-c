@@ -18,7 +18,72 @@
 //  limitations under the License.
 
 #import "OpenPhotoService.h"
+@interface OpenPhotoService()
+
+@property (nonatomic, retain, readwrite) NSString *server;
+@property (nonatomic, retain, readwrite) NSString *oAuthKey;
+@property (nonatomic, retain, readwrite) NSString *oAuthSecret;
+@property (nonatomic, retain, readwrite) NSString *consumerKey;
+@property (nonatomic, retain, readwrite) NSString *consumerSecret;
+
+@end
 
 @implementation OpenPhotoService
+static OpenPhotoService* _instance = nil; 
+@synthesize server=_server, oAuthKey=_oAuthKey, oAuthSecret=_oAuthSecret, consumerKey = _consumerKey, consumerSecret=_consumerSecret;
+
++ (OpenPhotoService*) singletonForServer:(NSString *) server 
+                                oAuthKey:(NSString *) oAuthKey 
+                             oAuthSecret:(NSString *) oAuthSecret 
+                             consumerKey:(NSString *) consumerKey 
+                          consumerSecret:(NSString *) consumerSecret{
+    @synchronized([OpenPhotoService class])
+    {
+        if (!_instance){
+            [[self alloc]initForServer:server   oAuthKey:oAuthKey oAuthSecret:oAuthSecret consumerKey:consumerKey consumerSecret:consumerSecret];
+        }
+        
+        return _instance;
+    }
+    
+    return nil;
+}
+
++(id)alloc
+{
+	@synchronized([OpenPhotoService class])
+	{
+		NSAssert(_instance == nil, @"Attempted to allocate a second instance of a singleton.");
+		_instance = [super alloc];
+		return _instance;
+	}
+    
+	return nil;
+}
+
+-(id)initForServer:(NSString *) server 
+          oAuthKey:(NSString *) oAuthKey 
+       oAuthSecret:(NSString *) oAuthSecret 
+       consumerKey:(NSString *) consumerKey 
+    consumerSecret:(NSString *) consumerSecret{
+    
+	self = [super init];
+    
+	if (self != nil) {
+        // set the objects
+        self.server = server;
+        self.oAuthKey = oAuthKey;
+        self.oAuthSecret = oAuthSecret;
+        self.consumerKey = consumerKey;
+        self.consumerSecret = consumerSecret;
+	}
+    
+	return self;
+}
+
+- (NSArray*) fetchNewestPhotosMaxResults:(int) maxResults{
+    return nil;
+}
+
 
 @end
