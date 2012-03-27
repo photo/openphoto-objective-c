@@ -16,8 +16,12 @@
 //  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
+//
 
-#import <Foundation/Foundation.h>
+#import "ASIHTTPRequest.h"
+#import "OAMutableURLRequest.h"
+#import "OAToken.h"
+#import "NSString+SBJSON.h"
 
 @interface OpenPhotoService : NSObject{
     
@@ -29,6 +33,7 @@
                              consumerKey:(NSString *) consumerKey 
                           consumerSecret:(NSString *) consumerSecret;
 
-- (NSArray*) fetchNewestPhotosMaxResults:(int) maxResults;
+- (NSArray*) fetchNewestPhotosMaxResult:(int) maxResult;
 
++ (BOOL) isMessageValid:(NSDictionary *)response;
 @end
