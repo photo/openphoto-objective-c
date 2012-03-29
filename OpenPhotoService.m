@@ -22,6 +22,8 @@
 
 - (NSArray *) sendSynchronousRequest:(NSString *) request;
 - (void) validateCredentials;
+- (OAMutableURLRequest*) getUrlRequest:(NSURL *) url;
+- (NSString *) contentTypeForImageData:(NSData *)data;
 
 @property (nonatomic, retain, readwrite) NSString *server;
 @property (nonatomic, retain, readwrite) NSString *oAuthKey;
@@ -32,37 +34,8 @@
 @end
 
 @implementation OpenPhotoService
-static OpenPhotoService* _instance = nil; 
+
 @synthesize server=_server, oAuthKey=_oAuthKey, oAuthSecret=_oAuthSecret, consumerKey = _consumerKey, consumerSecret=_consumerSecret;
-
-+ (OpenPhotoService*) singletonForServer:(NSString *) server 
-                                oAuthKey:(NSString *) oAuthKey 
-                             oAuthSecret:(NSString *) oAuthSecret 
-                             consumerKey:(NSString *) consumerKey 
-                          consumerSecret:(NSString *) consumerSecret{
-    @synchronized([OpenPhotoService class])
-    {
-        if (!_instance){
-            [[self alloc]initForServer:server   oAuthKey:oAuthKey oAuthSecret:oAuthSecret consumerKey:consumerKey consumerSecret:consumerSecret];
-        }
-        
-        return _instance;
-    }
-    
-    return nil;
-}
-
-+(id)alloc
-{
-	@synchronized([OpenPhotoService class])
-	{
-		NSAssert(_instance == nil, @"Attempted to allocate a second instance of a singleton.");
-		_instance = [super alloc];
-		return _instance;
-	}
-    
-	return nil;
-}
 
 -(id)initForServer:(NSString *) server 
           oAuthKey:(NSString *) oAuthKey 
@@ -72,7 +45,7 @@ static OpenPhotoService* _instance = nil;
     
 	self = [super init];
     
-	if (self != nil) {
+	if (self) {
         // set the objects
         self.server = server;
         self.oAuthKey = oAuthKey;
@@ -89,10 +62,10 @@ static OpenPhotoService* _instance = nil;
     
     if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)] == YES && [[UIScreen mainScreen] scale] == 2.00) {
         // retina display
-        [request appendString:@"640x734xCR"];
+        [request appendString:@"610x530xCR"];
     }else{
         // not retina display
-        [request appendString:@"320x367xCR"];
+        [request appendString:@"305x265xCR"];
     }
     
     return [self sendSynchronousRequest:request]; 
@@ -113,20 +86,7 @@ static OpenPhotoService* _instance = nil;
     // transform in URL for the request
     NSURL *url = [NSURL URLWithString:urlString];
     
-    
-    // token to send. We get the details from the user defaults
-    OAToken *token = [[OAToken alloc] initWithKey:self.oAuthKey
-                                           secret:self.oAuthSecret];
-    
-    // consumer to send. We get the details from the user defaults
-    OAConsumer *consumer = [[OAConsumer alloc] initWithKey:self.consumerKey
-                                                    secret:self.consumerSecret];
-    
-    OAMutableURLRequest *oaUrlRequest = [[OAMutableURLRequest alloc] initWithURL:url
-                                                                        consumer:consumer
-                                                                           token:token
-                                                                           realm:nil
-                                                               signatureProvider:nil];
+    OAMutableURLRequest *oaUrlRequest = [self getUrlRequest:url];
     [oaUrlRequest setHTTPMethod:@"GET"];
     
     // prepare the Authentication Header
@@ -141,11 +101,11 @@ static OpenPhotoService* _instance = nil;
     // send the request synchronous
     [asiHttpRequest startSynchronous];
     
-    
     // check the valid result
+#ifdef DEVELOPMENT_ENABLED
     NSLog(@"Response = %@",[asiHttpRequest responseString]);
-    NSDictionary *response =  [[asiHttpRequest responseString] JSONValue]; 
-    
+#endif
+    NSDictionary *response =  [[asiHttpRequest responseString] JSONValue];    
     
     if (![OpenPhotoService isMessageValid:response]){
         // invalid message
@@ -154,11 +114,6 @@ static OpenPhotoService* _instance = nil;
                                                        userInfo: nil];
         @throw exception;
     }             
-    
-    [token release];
-    [consumer release];
-    [oaUrlRequest release];
-    
     
     NSArray *result = [response objectForKey:@"result"] ;
     
@@ -169,6 +124,88 @@ static OpenPhotoService* _instance = nil;
     }else {
         return result;
     }
+}
+
+- (void) uploadPicture:(NSData*) data metadata:(NSDictionary*) values fileName:(NSString *)fileName
+{
+    [self validateCredentials];
+    
+    // set all details to send
+    NSString *uploadCall = [NSString stringWithFormat:@"title=%@&permission=%@&tags=%@",[values objectForKey:@"title"],[values objectForKey:@"permission"], [values objectForKey:@"tags"]];
+    
+    NSMutableString *urlString = [NSMutableString stringWithFormat: @"%@/photo/upload.json", self.server];
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+#ifdef DEVELOPMENT_ENABLED
+    NSLog(@"Url upload = [%@]. Execute OAuth and Multipart",urlString);
+    NSLog(@"Title %@",[values objectForKey:@"title"]);
+    NSLog(@"Permission %@",[values objectForKey:@"permission"]);
+    NSLog(@"Tags %@",[values objectForKey:@"tags"]);
+#endif
+    
+    OAMutableURLRequest *oaUrlRequest = [self getUrlRequest:url];                                                              
+    [oaUrlRequest setHTTPMethod:@"POST"]; 
+    [oaUrlRequest setValue:[NSString stringWithFormat:@"%d",[uploadCall length]] forHTTPHeaderField:@"Content-length"];
+    [oaUrlRequest setHTTPBody:[uploadCall dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:NO]];
+    
+    // prepare the request. This will be used to get the Authorization header and add in the multipart component        
+    [oaUrlRequest prepare];
+    
+    
+    /*
+     *
+     *   Using ASIHTTPRequest for Multipart. The authentication come from the OAMutableURLRequest
+     *
+     */
+    ASIFormDataRequest *asiRequest = [ASIFormDataRequest requestWithURL:url];
+    
+    // set the authorization header to be used in the OAuth            
+    NSDictionary *dictionary =  [oaUrlRequest allHTTPHeaderFields];
+    [asiRequest addRequestHeader:@"Authorization" value:[dictionary objectForKey:@"Authorization"]];
+    
+    // set the parameter already added in the signature
+    [asiRequest addPostValue:[values objectForKey:@"title"] forKey:@"title"];
+    [asiRequest addPostValue:[values objectForKey:@"permission"] forKey:@"permission"];
+    [asiRequest addPostValue:[values objectForKey:@"tags"] forKey:@"tags"];
+    
+    // add the file in the multipart. This file is stored locally for perfomance reason. We don't have to load it
+    // in memory. If it is a picture with filter, we just send without giving the name 
+    // and content type
+    [asiRequest addData:data  withFileName:fileName andContentType:[self contentTypeForImageData:data] forKey:@"photo"];
+    [asiRequest startSynchronous];
+    
+    // check the valid result
+#ifdef DEVELOPMENT_ENABLED
+    NSLog(@"Response = %@",[asiRequest responseString]);
+#endif 
+    
+    NSDictionary *response =  [[asiRequest responseString] JSONValue]; 
+    
+    if (![OpenPhotoService isMessageValid:response]){
+        // invalid message
+        NSException *exception = [NSException exceptionWithName: @"Incorrect request"
+                                                         reason: [NSString stringWithFormat:@"Error: %@ - %@",[response objectForKey:@"code"],[response objectForKey:@"message"]]
+                                                       userInfo: nil];
+        @throw exception;
+    }  
+}
+
+- (NSString *) contentTypeForImageData:(NSData *)data {
+    uint8_t c;
+    [data getBytes:&c length:1];
+    
+    switch (c) {
+        case 0xFF:
+            return @"image/jpeg";
+        case 0x89:
+            return @"image/png";
+        case 0x47:
+            return @"image/gif";
+        case 0x49:
+        case 0x4D:
+            return @"image/tiff";
+    }
+    return nil;
 }
 
 - (void) validateCredentials{
@@ -185,6 +222,31 @@ static OpenPhotoService* _instance = nil;
      @throw exception;
      */
     
+}
+
+- (OAMutableURLRequest*) getUrlRequest:(NSURL *) url
+{
+    
+#ifdef DEVELOPMENT_ENABLED
+    NSLog(@"auth key = %@",self.oAuthKey);
+    NSLog(@"auth secret = %@",self.oAuthSecret);
+    NSLog(@"consumer key = %@",self.consumerKey);
+    NSLog(@"consumer key = %@",self.consumerSecret);
+#endif
+    
+    // token to send. We get the details from the user defaults
+    OAToken *token = [[[OAToken alloc] initWithKey:self.oAuthKey
+                                            secret:self.oAuthSecret] autorelease];
+    
+    // consumer to send. We get the details from the user defaults
+    OAConsumer *consumer = [[[OAConsumer alloc] initWithKey:self.consumerKey
+                                                     secret:self.consumerSecret] autorelease];
+    
+    return [[[OAMutableURLRequest alloc] initWithURL:url
+                                            consumer:consumer
+                                               token:token
+                                               realm:nil
+                                   signatureProvider:nil] autorelease];
 }
 
 + (BOOL) isMessageValid:(NSDictionary *)response{

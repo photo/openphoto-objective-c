@@ -22,18 +22,23 @@
 #import "OAMutableURLRequest.h"
 #import "OAToken.h"
 #import "NSString+SBJSON.h"
+#import "ASIFormDataRequest.h"
 
 @interface OpenPhotoService : NSObject{
     
 }
 
-+ (OpenPhotoService*) singletonForServer:(NSString *) server 
-                                oAuthKey:(NSString *) oAuthKey 
-                             oAuthSecret:(NSString *) oAuthSecret 
-                             consumerKey:(NSString *) consumerKey 
-                          consumerSecret:(NSString *) consumerSecret;
+- (id)initForServer:(NSString *) server 
+           oAuthKey:(NSString *) oAuthKey 
+        oAuthSecret:(NSString *) oAuthSecret 
+        consumerKey:(NSString *) consumerKey 
+     consumerSecret:(NSString *) consumerSecret;
 
 - (NSArray*) fetchNewestPhotosMaxResult:(int) maxResult;
 
+// in the dictionary, we expect: title, permission and tags
+- (void) uploadPicture:(NSData*) data metadata:(NSDictionary*) values fileName:(NSString *)fileName;
+
 + (BOOL) isMessageValid:(NSDictionary *)response;
+
 @end
