@@ -57,7 +57,7 @@
 }
 
 - (NSArray*) fetchNewestPhotosMaxResult:(int) maxResult{
-    NSMutableString *request = [NSMutableString stringWithFormat: @"%@%i%@",@"/photos/list.json?sortBy=dateUploaded,DESC&pageSize=", maxResult, @"&returnSizes="];
+    NSMutableString *request = [NSMutableString stringWithFormat: @"%@%i%@",@"/v1/photos/list.json?sortBy=dateUploaded,DESC&pageSize=", maxResult, @"&returnSizes="];
     
     if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)] == YES && [[UIScreen mainScreen] scale] == 2.00) {
         // retina display
@@ -132,7 +132,7 @@
     // set all details to send
     NSString *uploadCall = [NSString stringWithFormat:@"title=%@&permission=%@&tags=%@",[values objectForKey:@"title"],[values objectForKey:@"permission"], [values objectForKey:@"tags"]];
     
-    NSMutableString *urlString = [NSMutableString stringWithFormat: @"%@/photo/upload.json", self.server];
+    NSMutableString *urlString = [NSMutableString stringWithFormat: @"%@/v1/photo/upload.json", self.server];
     NSURL *url = [NSURL URLWithString:urlString];
     
 #ifdef DEVELOPMENT_ENABLED
@@ -191,20 +191,17 @@
     return response;
 }
 
-- (void) validateCredentials{
-    
-    // validate if the singleton has all details for the account
-    
-    
-    // if not
-    /*
-     // throw exception
-     NSException *exception = [NSException exceptionWithName: @"unathorized access"
-     reason: @"Credentials is not configured correct"
-     userInfo: nil];
-     @throw exception;
-     */
-    
+- (void) validateCredentials{    
+    // validate if the service has all details for the account
+    if (self.oAuthKey == nil ||
+        self.oAuthSecret == nil ||
+        self.consumerKey == nil ||
+        self.consumerSecret == nil){
+        NSException *exception = [NSException exceptionWithName: @"unathorized access"
+                                                         reason: @"Credentials is not configured correct"
+                                                       userInfo: nil];
+        @throw exception; 
+    }
 }
 
 - (OAMutableURLRequest*) getUrlRequest:(NSURL *) url
