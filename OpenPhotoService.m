@@ -73,7 +73,7 @@
 }
 
 
-- (NSDictionary*) uploadPicture:(NSData*) data metadata:(NSDictionary*) values fileName:(NSString *)fileName
+- (NSDictionary*) uploadPicture:(NSData*) data metadata:(NSDictionary*) values fileName:(NSString *)fileName delegate:(id) delegate
 {
     [self validateCredentials];
     
@@ -119,6 +119,11 @@
     [asiRequest addPostValue:[values objectForKey:@"title"] forKey:@"title"];
     [asiRequest addPostValue:[values objectForKey:@"permission"] forKey:@"permission"];
     [asiRequest addPostValue:[values objectForKey:@"tags"] forKey:@"tags"];
+    
+    if (delegate){
+        // set the progress bar
+        [asiRequest setUploadProgressDelegate:[delegate retain]]; 
+    }
     
     // add the file in the multipart. This file is stored locally for perfomance reason. We don't have to load it
     // in memory. If it is a picture with filter, we just send without giving the name 
@@ -177,6 +182,7 @@
         ASIHTTPRequest *asiHttpRequest = [ASIHTTPRequest requestWithURL:url];
         [asiHttpRequest addRequestHeader:@"Authorization" value:[dictionary objectForKey:@"Authorization"]];
         [asiHttpRequest setUserAgent:@"OpenPhoto iOS"];
+        [asiHttpRequest setTimeOutSeconds:60];
         
         // send the request synchronous
         [asiHttpRequest startSynchronous];
@@ -188,6 +194,7 @@
         ASIFormDataRequest *asiRequest = [ASIFormDataRequest requestWithURL:url];
         [asiRequest addRequestHeader:@"Authorization" value:[dictionary objectForKey:@"Authorization"]];
         [asiRequest setUserAgent:@"OpenPhoto iOS"];
+        [asiRequest setTimeOutSeconds:60];
         
         [asiRequest startSynchronous];
         
@@ -233,7 +240,7 @@
                                                        userInfo: nil];
         @throw exception;
     }             
-
+    
     return result;
 }
 
